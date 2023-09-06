@@ -52,20 +52,15 @@
   </table>
 
   <h2>New book</h2>
-  <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
-    <input name="utf8" type="hidden" value="✓">
-    <input type="hidden" name="authenticity_token" value="97Tr4rzxAYKJ69VpgLmxneqlSCS2sn0SWvg26i9jQv6yVh6yAQbd/nTyRHqV2LMfOruF40zw+tf/YA2PFYCR4g==">
-    <div class="field">
-      <label for="book_title">Title</label>
-      <textarea class="book_title" name="book[title]" id="book_title"></textarea>
-    <div class="field">
-      <label for="book_body">Body</label>
-      <textarea class="book_body" name="book[body]" id="book_body"></textarea>
-    </div>
-    </div>
-    <div class="actions">
-      <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book">
-    </div>
-  </form>
+  <%= form_with model: @book, url: '/books', method: :post do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
 </body>
 </html>
